@@ -267,7 +267,7 @@ def root():
 
 启动：
 ```bash
-uv run uvicorn app:app --reload
+uvicorn app:app --reload
 ```
 
 访问：http://localhost:8000/docs

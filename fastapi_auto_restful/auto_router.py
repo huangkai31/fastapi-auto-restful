@@ -50,7 +50,10 @@ def _create_pydantic_models(table):
     fields = {}
     for col in table.columns:
         py_type = infer_python_type(str(col.type))
-        required = not (col.nullable or col.default is not None)
+        # 判断是否为自增主键
+        is_auto_increment_pk = col.primary_key and col.autoincrement
+        # 如果是自增主键，或者该列可以为空，或者有默认值，则设为可选
+        required = not (is_auto_increment_pk or col.nullable or col.default is not None)
         fields[col.name] = (py_type, ... if required else None)
     CreateModel = create_model(f"{table.name.capitalize()}Create", **fields)
     ResponseModel = create_model(f"{table.name.capitalize()}Response", **fields)

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fastapi-auto-restful"
-version = "0.3.0"
+version = "0.3.1"
 description = "Auto-generate FastAPI CRUD routes with pagination, filtering, and async support"
 readme = "README.md"
 license = {text = "MIT"}
