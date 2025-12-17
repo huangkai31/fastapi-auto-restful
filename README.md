@@ -1,4 +1,4 @@
-# fastapi-auto-crud
+# fastapi-auto-restful
 
 Automatically generate RESTful CRUD APIs from your database tables.
 
@@ -13,4 +13,4 @@ Automatically generate RESTful CRUD APIs from your database tables.
 ## 🚀 Install
 
 ```bash
-pip install fastapi-auto-crud
+pip install fastapi-auto-restful

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 
 app = FastAPI()
 app.include_router(

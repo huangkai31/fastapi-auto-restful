@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from fastapi import FastAPI
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 
 def test_sync_read_all(sync_engine):
     app = FastAPI()

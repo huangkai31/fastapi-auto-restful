@@ -5,3 +5,6 @@ pycache/
 dist/
 build/
 *.egg-info/
+
+.venv
+venv

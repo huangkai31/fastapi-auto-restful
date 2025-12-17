@@ -1,6 +1,6 @@
 # FastAPI 自动 CRUD API 生成器开发与使用指南
 
-本文档介绍如何使用 `fastapi-auto-crud` —— 一个能**自动为数据库表生成完整 RESTful CRUD API** 的 FastAPI 扩展库。支持同步/异步、分页、查询过滤、外键嵌套响应，并提供完整的开发、测试、打包流程。使用现代工具链 `uv` 进行高效开发。
+本文档介绍如何使用 `fastapi-auto-restful` —— 一个能**自动为数据库表生成完整 RESTful CRUD API** 的 FastAPI 扩展库。支持同步/异步、分页、查询过滤、外键嵌套响应，并提供完整的开发、测试、打包流程。使用现代工具链 `uv` 进行高效开发。
 
 ---
 
@@ -19,8 +19,8 @@
 ## 二、项目结构
 
 ```
-fastapi-auto-crud/
-├── fastapi_auto_crud/       # 核心代码
+fastapi-auto-restful/
+├── fastapi_auto_restful/       # 核心代码
 │   ├── __init__.py
 │   ├── auto_router.py      # CRUD 路由生成器（支持 sync/async）
 │   ├── query_parser.py     # 查询参数解析
@@ -44,7 +44,7 @@ fastapi-auto-crud/
 ### 1. 安装
 
 ```bash
-pip install fastapi-auto-crud
+pip install fastapi-auto-restful
 ```
 
 > 或从源码安装（开发模式）：
@@ -57,7 +57,7 @@ pip install fastapi-auto-crud
 ```python
 # main.py
 from fastapi import FastAPI
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 
 app = FastAPI()
 
@@ -75,7 +75,7 @@ app.include_router(
 
 ```python
 from sqlalchemy import create_engine
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 
 engine = create_engine("postgresql://user:pass@localhost/mydb", pool_size=10)
 
@@ -140,53 +140,39 @@ app.include_router(
 
 ---
 
-## 五、开发与测试（使用 `uv`）
+## 五、开发与测试（使用 `pip`）
 
-> **`uv` 是由 Astral 开发的超快 Python 工具链，用于替代 pip/virtualenv**
-
-### 1. 安装 `uv`
-
-```bash
-# Linux / macOS
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Windows (PowerShell)
-irm https://astral.sh/uv/install.ps1 | iex
-```
-
-验证：
-```bash
-uv --version
-```
-
-### 2. 开发流程
+### 1. 开发流程
 
 ```bash
 # 克隆或创建项目
-git clone https://github.com/yourname/fastapi-auto-crud
-cd fastapi-auto-crud
+git clone https://github.com/yourname/fastapi-auto-restful
+cd fastapi-auto-restful
 
 # 创建虚拟环境
-uv venv
+python -m venv venv
+
+# 激活虚拟环境
+# Linux / macOS
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+
+# 升级 pip
+pip install --upgrade pip
 
 # 安装项目（开发模式）
-uv pip install -e .[dev]
+pip install -e .[dev]
 
 # 运行测试
-uv run pytest
+pytest
 
 # 启动示例（同步）
-uv run uvicorn examples.sync_example:app --reload
+uvicorn examples.sync_example:app --reload
 
 # 启动示例（异步）
-uv run uvicorn examples.async_example:app --reload
+uvicorn examples.async_example:app --reload
 ```
-
-### 3. `uv` 优势
-
-- **速度极快**：依赖解析比 pip 快 10-100 倍
-- **自动隔离**：`uv run` 自动使用项目虚拟环境
-- **准确可靠**：基于 PubGrub 依赖解析算法
 
 ---
 
@@ -219,7 +205,7 @@ async def test_async_create(async_engine):
 
 运行测试：
 ```bash
-uv run pytest tests/ -v
+pytest tests/ -v
 ```
 
 ---
@@ -229,19 +215,19 @@ uv run pytest tests/ -v
 ### 1. 构建分发包
 
 ```bash
-uv pip install build
-uv run python -m build
+pip install build
+python -m build
 ```
 
 生成文件：
-- `dist/fastapi_auto_crud-0.3.0-py3-none-any.whl`
-- `dist/fastapi-auto-crud-0.3.0.tar.gz`
+- `dist/fastapi_auto_restful-0.3.0-py3-none-any.whl`
+- `dist/fastapi-auto-restful-0.3.0.tar.gz`
 
 ### 2. 发布到 PyPI（可选）
 
 ```bash
-uv pip install twine
-uv run twine upload dist/*
+pip install twine
+twine upload dist/*
 ```
 
 ---
@@ -261,7 +247,7 @@ uv run twine upload dist/*
 ```python
 # app.py
 from fastapi import FastAPI
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 
 app = FastAPI(title="Auto CRUD API")
 
@@ -303,4 +289,4 @@ uv run uvicorn app:app --reload
 **作者**：huangkai  
 **版本**：0.3.0  
 **许可证**：MIT  
-**仓库**：https://github.com/huangkai31/fastapi-auto-crud
+**仓库**：https://github.com/huangkai31/fastapi-auto-restful

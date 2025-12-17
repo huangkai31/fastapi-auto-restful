@@ -1,6 +1,6 @@
 # examples/sync_example.py
 from fastapi import FastAPI
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 import os
 
 # 创建数据库文件（如果不存在）

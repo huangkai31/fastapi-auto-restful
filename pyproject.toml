@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fastapi-auto-crud"
+name = "fastapi-auto-restful"
 version = "0.3.0"
 description = "Auto-generate FastAPI CRUD routes with pagination, filtering, and async support"
 readme = "README.md"
 license = {text = "MIT"}
-authors = [{name = "Your Name", email = "you@example.com"}]
+authors = [{name = "Kai Huang", email = "huangkai31@gmail.com"}]
 classifiers = [
     "Framework :: FastAPI",
     "License :: OSI Approved :: MIT License",
@@ -33,5 +33,5 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourname/fastapi-auto-crud"
-Repository = "https://github.com/yourname/fastapi-auto-crud"
+Homepage = "https://github.com/huangkai31/fastapi-auto-restful"
+Repository = "https://github.com/huangkai31/fastapi-auto-restful"

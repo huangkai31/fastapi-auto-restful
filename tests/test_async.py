@@ -1,7 +1,7 @@
 import pytest
 from httpx import AsyncClient
 from fastapi import FastAPI
-from fastapi_auto_crud import generate_crud_routes
+from fastapi_auto_restful import generate_crud_routes
 
 @pytest.mark.asyncio
 async def test_async_create(async_engine):
